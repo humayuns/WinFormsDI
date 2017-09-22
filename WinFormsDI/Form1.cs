@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,19 @@ namespace WinFormsDI
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private IRepository<Process> _processRepository;
+
+        public Form1(IRepository<Process> productionRepository)
+        {
+            this._processRepository = productionRepository;
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(_processRepository.ToString());
         }
     }
 }

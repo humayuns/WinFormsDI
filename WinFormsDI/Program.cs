@@ -14,9 +14,11 @@ namespace WinFormsDI
         [STAThread]
         static void Main()
         {
+            CompositionRoot.Wire(new ApplicationModule());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Application.Run(new Form1());
+            Application.Run(CompositionRoot.Resolve<Form1>());
         }
     }
 }
